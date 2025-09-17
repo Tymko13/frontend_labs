@@ -1,0 +1,39 @@
+app-profile {
+  flex: 0 0 18%;
+}
+
+.favs-wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.5%;
+}
+
+.next, .prev {
+  color: gray;
+  scale: 0.25 1.5;
+  translate: 0 -50%;
+  position: absolute;
+  font-size: 3rem;
+  top: 50%;
+  &:hover {
+    color: black;
+  }
+}
+
+.next {
+  right: -4rem;
+}
+
+.prev {
+  left: -4rem;
+  rotate: 180deg;
+}
+
+.next:after {
+  content: "\27A4";
+}
+
+.prev:after {
+  content: "\27A4";
+}

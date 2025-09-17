@@ -1,0 +1,74 @@
+@use '../../assets/variables' as *;
+@use 'sass:color';
+
+.profile-wrapper {
+  position: relative;
+}
+
+.img-wrapper {
+  border: 5px solid color.adjust($accent-color, $lightness: 10%);
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: flex;
+  overflow: hidden;
+  transition-duration: 0.2s;
+  &:hover {
+    border-color: $accent-color;
+    cursor: pointer;
+    & h2 {
+      font-size: 3rem;
+      color: $accent-color;
+    }
+    & img {
+      transform: scale(1.2);
+    }
+  }
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 1/1;
+  transition-duration: 0.2s;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.gray {
+  color: #3f3f3f;
+  margin-bottom: 0.25rem;
+}
+
+.profile-wrapper {
+  width: 100%;
+  display: inline-block;
+}
+
+.name {
+  font-size: 1.5rem;
+  word-spacing: 9999rem;
+  margin: 0.75rem 0;
+}
+
+.initials {
+  margin: auto 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  transition-duration: 0.2s;
+  color: color.adjust($accent-color, $lightness: 10%);
+}
+
+.mark {
+  position: absolute;
+  font-size: 4rem;
+  top: -0.25rem;
+  right: -0.25rem;
+  color: orange;
+  &:after {
+    content: "\2605";
+  }
+}

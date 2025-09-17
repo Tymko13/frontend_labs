@@ -1,0 +1,41 @@
+.filter-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 2rem;
+  height: 2rem;
+  &>span {
+    height: 100%;
+    border-right: 2px dotted #666;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:last-child {
+      border-right: none;
+    }
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
+  }
+}
+
+select {
+  padding: 0.25rem 0.5rem;
+  margin-right: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input {
+  margin-left: 1rem;
+}
+
+label {
+  margin: 1rem;
+  &:hover {
+    cursor: pointer;
+  }
+}

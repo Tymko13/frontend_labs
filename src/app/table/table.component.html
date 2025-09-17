@@ -1,0 +1,30 @@
+<table>
+  <thead class="m">
+    <tr>
+      <th>Name</th>
+      <th>Specialty</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Nationality</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(person of people | async; track $index) {
+      <tr>
+        <td>{{ person.name }}</td>
+        <td>{{ person.field }}</td>
+        <td>{{person.age}}</td>
+        <td>{{person.sex}}</td>
+        <td>{{ person.location }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<span class="pagination">
+  <a>1</a>
+  <a href="a">2</a>
+  <a href="a">3</a>
+  ...
+  <a href="a">Last</a>
+</span>
