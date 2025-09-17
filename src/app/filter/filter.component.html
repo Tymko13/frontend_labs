@@ -1,0 +1,39 @@
+<section class="filter-wrapper">
+  <span>
+    <label for="age">Age</label>
+    <select id="age">
+      @for (age of ages; track $index) {
+        <option [value]="age">{{ age }}</option>
+      }
+    </select>
+  </span>
+
+  <span>
+    <label for="location">Region</label>
+    <select id="location">
+      @for (location of peopleService.getLocations() | async; track $index) {
+        <option [value]="location">{{ location }}</option>
+      }
+    </select>
+  </span>
+
+  <span>
+    <label for="sex">Sex</label>
+    <select id="sex">
+      @for (sex of ["Male", "Female", "Intersex"]; track $index) {
+        <option [value]="sex">{{ sex }}</option>
+      }
+    </select>
+  </span>
+
+  <span>
+    <input type="checkbox" id="photo">
+    <label for="photo">Only with photo</label>
+  </span>
+
+  <span>
+    <input type="checkbox" id="fav">
+    <label for="fav">Only favourite</label>
+  </span>
+
+</section>

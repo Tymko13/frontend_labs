@@ -1,0 +1,46 @@
+<div class="fc wrapper">
+  <div class="fc">
+    <header class="fr">
+      <h1 class="title l">Teachinder</h1>
+      <input type="text" placeholder="Name, note or age to search">
+      <button class="border-button">Search</button>
+    </header>
+    <app-nav></app-nav>
+  </div>
+
+  <app-section title="Top Teachers">
+    <app-filter></app-filter>
+    <section class="fr top-teacher-wrapper">
+      @for (person of people | async; track person) {
+        <app-profile [person]="person"></app-profile>
+      }
+    </section>
+  </app-section>
+  <app-section title="Statistics">
+    <app-table></app-table>
+  </app-section>
+  <app-section title="Favourites">
+    <app-favs></app-favs>
+  </app-section>
+  <app-section title="">
+    <footer class="fc">
+      <small>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius eligendi, facere ipsa necessitatibus
+        nesciunt, odio praesentium repellat soluta sunt, suscipit ullam veritatis voluptatibus! Blanditiis eveniet id
+        laudantium minus nam. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      </small>
+      <br>
+      <small>
+        Autem beatae blanditiis delectus, excepturi exercitationem illum ipsam, iure modi necessitatibus perferendis
+        perspiciatis qui repellat
+        rerum tenetur ut velit vitae, voluptatem voluptatum! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Ab culpa dicta eius est fugit id in neque praesentium, quia rem repellendus tempora veniam veritatis voluptas
+        voluptate? Asperiores ipsa iure sint.
+      </small>
+      <app-nav></app-nav>
+    </footer>
+  </app-section>
+</div>
+
+<!--<app-add-teacher-popup [visible]="true"></app-add-teacher-popup>>-->
+

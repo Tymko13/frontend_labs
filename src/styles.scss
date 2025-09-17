@@ -1,0 +1,63 @@
+@use 'sass:color';
+@use 'assets/variables' as *;
+
+@import url('assets/fonts/Roboto.css');
+@import url('assets/normalize.css');
+
+* {
+  font-family: 'Roboto', serif;
+  font-size: 1rem;
+}
+
+.fc {
+  display: flex;
+  flex-direction: column;
+}
+
+.fr {
+  display: flex;
+  flex-direction: row;
+}
+
+.w {
+  width: 100%;
+}
+
+.m {
+  font-size: 1.3rem;
+}
+
+.l {
+  font-size: 2.5rem;
+}
+
+.text-button {
+  border: none;
+  background: none;
+  color: $accent-color;
+  font-weight: bold;
+  padding: 0;
+  &:hover {
+    color: color.adjust($accent-color, $lightness: -15%);
+  }
+}
+
+.border-button {
+  border: 1px solid $accent-color;
+  background: none;
+  color: $accent-color;
+  padding: 0.5em 1em;
+  transition: 0.15s;
+  &:hover {
+    color: white;
+    background-color: $accent-color;
+  }
+}
+
+input {
+  padding: 0.5rem 0.25rem;
+}
+
+body {
+  background-color: #fcfcfc;
+}

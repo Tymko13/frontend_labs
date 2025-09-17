@@ -1,0 +1,63 @@
+@use '../assets/variables' as *;
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 2rem 5rem;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+header {
+  &>input,button {
+    margin-left: 1rem;
+    align-self: center;
+  }
+}
+
+input {
+  width: 15rem;
+  transition-duration: 0.2s;
+  &:hover {
+    width: 20rem;
+  }
+  &:focus {
+    width: 20rem;
+  }
+}
+
+.title {
+  margin-right: auto;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  font-size: 2.7rem;
+  letter-spacing: 3px;
+  text-shadow: -2px -1px $accent-color, 2px 1px black;
+  transition-duration: 0.2s;
+  &:hover {
+    text-shadow: -3px -2px $accent-color, 3px 2px black;
+    cursor: pointer;
+    color: #f1f1f1;
+  }
+}
+
+footer {
+  text-align: left;
+  margin-top: auto;
+}
+
+.top-teacher-wrapper {
+  gap: 2.5%;
+  row-gap: 1rem;
+  flex-wrap: wrap;
+}
+
+app-profile {
+  width: 18%;
+}
+
+app-nav {
+  margin-top: 2rem;
+}
