@@ -54,10 +54,15 @@
   }
 }
 
-input {
+input, select {
   padding: 0.5rem 0.25rem;
 }
 
 body {
   background-color: #fcfcfc;
+}
+
+
+.no-scroll {
+  overflow-y: scroll;
 }
