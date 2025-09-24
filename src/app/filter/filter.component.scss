@@ -39,3 +39,15 @@ label {
     cursor: pointer;
   }
 }
+
+@media (max-width: 920px) {
+  input, select, .filter-wrapper {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 835px) {
+  .filter-wrapper {
+    font-size: 0.5rem;
+  }
+}

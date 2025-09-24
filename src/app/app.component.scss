@@ -1,7 +1,7 @@
 @use '../assets/variables' as *;
 
 .wrapper {
-  width: 70%;
+  max-width: 70rem;
   margin: 0 auto;
   min-height: 100vh;
   padding: 2rem 5rem;
