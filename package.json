@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node express.js",
     "build": "rm -f build && ../frontend-labs/node_modules/.bin/cross-env NODE_ENV=production webpack --progress",
-    "lint": "../frontend-labs/node_modules/.bin/eslint src/js",
+    "lint": "../frontend-labs/node_modules/.bin/eslint src/assets/js",
     "stylelint": "../frontend-labs/node_modules/.bin/stylelint src/css"
   },
   "private": true,

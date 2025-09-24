@@ -31,9 +31,12 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/assets"],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/normalize.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/app.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -85,9 +88,12 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/assets"],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/normalize.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/app.js"
+            ]
           }
         }
       }
