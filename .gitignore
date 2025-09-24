@@ -132,3 +132,4 @@ dist
 ../frontend_labs/node_modules
 build
 /.angular/
+/node_modules/

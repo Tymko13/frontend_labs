@@ -8,6 +8,7 @@ import {FilterComponent} from './filter/filter.component';
 import {TableComponent} from './table/table.component';
 import {FavsComponent} from './favs/favs.component';
 import {AddTeacherPopupComponent} from './add-teacher-popup/add-teacher-popup.component';
+import {TeacherInfoPopupComponent} from './teacher-info-popup/teacher-info-popup.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ import {AddTeacherPopupComponent} from './add-teacher-popup/add-teacher-popup.co
     FilterComponent,
     TableComponent,
     FavsComponent,
-    AddTeacherPopupComponent
+    AddTeacherPopupComponent,
+    TeacherInfoPopupComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
