@@ -9,13 +9,13 @@
     </tr>
   </thead>
   <tbody>
-    @for(person of people | async; track $index) {
+    @for(person of people; track $index) {
       <tr>
-        <td>{{ person.name }}</td>
-        <td>{{ person.field }}</td>
+        <td>{{ person.fullName }}</td>
+        <td>{{ person.course }}</td>
         <td>{{person.age}}</td>
-        <td>{{person.sex}}</td>
-        <td>{{ person.location }}</td>
+        <td>{{person.gender}}</td>
+        <td>{{ person.country }}</td>
       </tr>
     }
   </tbody>
@@ -23,8 +23,8 @@
 
 <span class="pagination">
   <a>1</a>
-  <a href="a">2</a>
-  <a href="a">3</a>
+  <a href="">2</a>
+  <a href="">3</a>
   ...
-  <a href="a">Last</a>
+  <a href="">Last</a>
 </span>

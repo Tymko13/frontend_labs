@@ -1,17 +1,17 @@
 <section class="fc profile-wrapper">
   <span class="img-wrapper">
-    @if(person?.photoUrl) {
-      <img [src]="person?.photoUrl" alt="Portrait of {{person?.name}}">
+    @if(person?.pictureLarge) {
+      <img [src]="person?.pictureLarge" alt="Portrait of {{person?.fullName}}">
     } @else {
-      <h2 class="initials">{{toInitials(person?.name!)}}</h2>
+      <h2 class="initials">{{toInitials(person?.fullName!)}}</h2>
     }
   </span>
-  <h2 class="m name">{{person?.name}}</h2>
+  <h2 class="m name w">{{person?.fullName}}</h2>
   @if(showStar) {
-    <p class="gray">{{person?.field}}</p>
+    <p class="gray">{{person?.course}}</p>
   }
-  <small class="gray">{{person?.location}}</small>
-  @if(person?.fav && showStar) {
+  <small class="gray">{{person?.country}}</small>
+  @if(person?.favourite && showStar) {
     <span class="mark"></span>
   }
 </section>

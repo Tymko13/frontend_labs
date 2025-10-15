@@ -9,9 +9,9 @@
   </div>
 
   <app-section title="Top Teachers">
-    <app-filter></app-filter>
+    <app-filter (filter)="filterPeople($event)"></app-filter>
     <section class="fr top-teacher-wrapper">
-      @for (person of people | async; track person) {
+      @for (person of people(); track $index) {
         <app-profile [person]="person"></app-profile>
       }
     </section>
@@ -43,4 +43,5 @@
 </div>
 
 <!--<app-add-teacher-popup [visible]="true"></app-add-teacher-popup>>-->
+<!--<app-teacher-info-popup [person]="people()![0]" [visible]="true"></app-teacher-info-popup>-->
 

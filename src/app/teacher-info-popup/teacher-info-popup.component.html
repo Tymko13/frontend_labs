@@ -1,0 +1,25 @@
+<span class="overlay">
+  <span class="popup">
+    <span class="top-bar fr">
+      <h1>Teacher Info</h1>
+      <button class="text-button cancel" (click)="close()">&#10006;</button>
+    </span>
+    <span class="fr w" style="padding: 2rem;">
+      <img [src]="person?.pictureLarge" alt="A portrait of a person.">
+      <span class="fc w info">
+        <h1 class="l">{{ person?.fullName }}</h1>
+        <h2>{{ person?.course }}</h2>
+        <p>{{ person?.country }}</p>
+        <p>{{ person?.age }}, {{ person?.gender }}</p>
+        <a href="">{{ 'email@example.com' }}</a>
+        <p>{{ '096-666-66-66' }}</p>
+      </span>
+    </span>
+    <span class="fc w" style="padding: 0 0 2rem 2rem;">
+      <p class="description">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium adipisci consequatur doloremque dolorum, eligendi exercitationem explicabo iste iure minus nesciunt officia officiis quo, ratione vel voluptatibus, voluptatum. Delectus, minus.
+      </p>
+      <a href="" class="toggle">toggle-map</a>
+    </span>
+  </span>
+</span>
