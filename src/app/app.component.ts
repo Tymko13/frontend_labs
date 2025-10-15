@@ -1,8 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {SectionComponent} from './section/section.component';
 import {NavComponent} from './nav/nav.component';
-import {PeopleService} from './_services/people.service';
-import {AsyncPipe} from '@angular/common';
+import {PeopleService} from './_person/people.service';
 import {ProfileComponent} from './profile/profile.component';
 import {FilterComponent} from './filter/filter.component';
 import {TableComponent} from './table/table.component';
@@ -15,7 +14,6 @@ import {TeacherInfoPopupComponent} from './teacher-info-popup/teacher-info-popup
   imports: [
     SectionComponent,
     NavComponent,
-    AsyncPipe,
     ProfileComponent,
     FilterComponent,
     TableComponent,

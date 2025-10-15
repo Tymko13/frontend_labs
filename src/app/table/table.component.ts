@@ -1,12 +1,12 @@
 import {Component, inject} from '@angular/core';
-import {PeopleService} from '../_services/people.service';
+import {PeopleService} from '../_person/people.service';
 import {AsyncPipe} from '@angular/common';
 
 @Component({
   selector: 'app-table',
   imports: [
-    AsyncPipe
-  ],
+
+    ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })

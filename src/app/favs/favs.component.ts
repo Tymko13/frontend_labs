@@ -1,13 +1,10 @@
 import {Component, inject} from '@angular/core';
-import {PeopleService} from '../_services/people.service';
-import {AsyncPipe} from '@angular/common';
+import {PeopleService} from '../_person/people.service';
 import {ProfileComponent} from '../profile/profile.component';
-import {map} from 'rxjs';
 
 @Component({
   selector: 'app-favs',
   imports: [
-    AsyncPipe,
     ProfileComponent
   ],
   templateUrl: './favs.component.html',
@@ -15,8 +12,5 @@ import {map} from 'rxjs';
 })
 export class FavsComponent {
   readonly peopleService = inject(PeopleService)
-  readonly favPeople = this.peopleService.getPeople()
-    .pipe(
-      map(people =>
-        people.filter(person => person.fav)));
+  readonly favPeople = this.peopleService.filterPeople({favourite: true});
 }

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {Person} from '../_models/person';
+import {Person} from '../_person/person';
 
 @Component({
   selector: 'app-teacher-info-popup',

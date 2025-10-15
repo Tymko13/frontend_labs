@@ -11,7 +11,7 @@
   <app-section title="Top Teachers">
     <app-filter></app-filter>
     <section class="fr top-teacher-wrapper">
-      @for (person of people | async; track person) {
+      @for (person of people; track person) {
         <app-profile [person]="person"></app-profile>
       }
     </section>

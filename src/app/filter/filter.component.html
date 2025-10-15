@@ -11,7 +11,7 @@
   <span>
     <label for="location">Region</label>
     <select id="location">
-      @for (location of peopleService.getLocations() | async; track $index) {
+      @for (location of peopleService.getLocations(); track $index) {
         <option [value]="location">{{ location }}</option>
       }
     </select>

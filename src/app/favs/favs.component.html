@@ -1,12 +1,12 @@
 <span class="favs-wrapper">
-  @if ((favPeople | async)!.length > 5) {
+  @if (favPeople!.length > 5) {
     <button class="prev text-button"></button>
   }
 
-  @for (person of favPeople | async; track $index) {
+  @for (person of favPeople; track $index) {
     <app-profile [showStar]="false" [person]="person"></app-profile>
   }
-  @if ((favPeople | async)!.length > 5) {
+  @if ((favPeople)!.length > 5) {
     <button class="next text-button"></button>
   }
 </span>
