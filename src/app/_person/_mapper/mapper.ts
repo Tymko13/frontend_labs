@@ -16,7 +16,14 @@ function capitalize(word: string | null | undefined): string {
 }
 
 export function getAllPeople(): Person[] {
-  return mapRandomUsersToPeople(randomUserMock).concat(mapAdditionalUsersToPeople(additionalUsers));
+  const ids = new Set<string>();
+  return mapRandomUsersToPeople(randomUserMock).concat(mapAdditionalUsersToPeople(additionalUsers)).filter(person => {
+    if(ids.has(person.id)) {
+      return false;
+    }
+    ids.add(person.id);
+    return true;
+  });
 }
 
 export function mapRandomUsersToPeople(randomUsers: typeof randomUserMock): Person[] {

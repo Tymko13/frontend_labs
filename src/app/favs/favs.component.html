@@ -1,13 +1,16 @@
-<span class="favs-wrapper">
-  @if (favPeople!.length > 5) {
-    <button class="prev text-button"></button>
+<span class="favs-wrapper w fr">
+  @if (favPeople().length > 5) {
+    <button (click)="prev()" class="prev text-button"></button>
   }
-
-  @for (person of favPeople; track $index) {
-    <app-profile [showStar]="false" [person]="person"></app-profile>
-  }
-  @if ((favPeople)!.length > 5) {
-    <button class="next text-button"></button>
+  <span class="no-overflow">
+      <span class="profiles-wrapper" [style.transform]="'translateX(' + -startIndex() * 200+ 'px)'">
+        @for (person of favPeople(); track $index) {
+          <app-profile [showStar]="false" [person]="person"></app-profile>
+        }
+    </span>
+  </span>
+  @if (favPeople().length > 5) {
+    <button (click)="next()" class="next text-button"></button>
   }
 </span>
 

@@ -39,7 +39,7 @@ input {
   transition-duration: 0.2s;
   &:hover {
     text-shadow: -3px -2px $accent-color, 3px 2px black;
-    cursor: pointer;
+    cursor: default;
     color: #f1f1f1;
   }
 }

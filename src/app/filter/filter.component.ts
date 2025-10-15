@@ -1,4 +1,4 @@
-import {Component, effect, EventEmitter, inject, Output, signal} from '@angular/core';
+import {Component, effect, EventEmitter, inject, Input, Output, signal} from '@angular/core';
 import {PeopleService} from '../_person/people.service';
 import {FormsModule} from '@angular/forms';
 
@@ -6,7 +6,6 @@ import {FormsModule} from '@angular/forms';
   selector: 'app-filter',
   imports: [
     FormsModule
-
   ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss'
@@ -34,4 +33,5 @@ export class FilterComponent {
   }
 
   @Output() filter = new EventEmitter<{}>();
+  @Input() disabled: boolean = false;
 }

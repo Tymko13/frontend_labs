@@ -9,12 +9,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .popup {
   background: white;
   border-radius: 0.5rem;
-  max-width: 60rem;
+  width: 60rem;
   min-width: 40rem;
   display: flex;
   flex-direction: column;
@@ -22,6 +23,7 @@
   justify-content: start;
   overflow: hidden;
   margin: 0 2rem;
+  z-index: 10000;
 }
 
 .top-bar {
@@ -47,11 +49,11 @@ img {
   width: 20rem;
   height: 20rem;
   object-fit: cover;
+  margin-right: 2rem;
 }
 
 .info {
   gap: 1rem;
-  margin-left: 2rem;
   align-items: start;
   &>p {
     color: gray;
@@ -61,6 +63,10 @@ img {
     font-size: 1.2rem;
     margin-top: 1rem;
   }
+}
+
+h1 {
+  text-align: left;
 }
 
 span {
@@ -76,4 +82,33 @@ span {
 .toggle {
   text-decoration: underline dotted;
   text-underline-offset: 5px;
+}
+
+.heading {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mark {
+  position: relative;
+  font-size: 4rem;
+  color: orange;
+  &:after {
+    content: "\2605";
+  }
+  &:hover {
+    color: orangered;
+    cursor: pointer;
+  }
+}
+
+.extra-mark {
+  font-size: 3rem;
+  position: absolute;
+  top: 0.55rem;
+  right: 0.45rem;
+  color: white;
+  &:after {
+    content: "\2605";
+  }
 }

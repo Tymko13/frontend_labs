@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .popup {
@@ -21,6 +22,7 @@
   align-items: center;
   justify-content: start;
   overflow: hidden;
+  z-index: 10000;
 }
 
 .top-bar {

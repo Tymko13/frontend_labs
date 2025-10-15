@@ -1,4 +1,5 @@
 import {additionalUsers, randomUserMock} from './FE4U-Lab2-mock';
+import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 function validateEmail(email: string): boolean {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -8,7 +9,6 @@ function validateEmail(email: string): boolean {
 function validatePhone(phone: string): boolean {
   const re = /^\+?(\(\d{2,3}\)|\d{2,3})?[-\s]?\d{3,4}[-\s]?\d{2,3}[-\s]?\d{2,3}$/;
   return re.test(phone);
-
 }
 
 export function filterValidRandomUsers(users: typeof randomUserMock): typeof randomUserMock {
@@ -37,4 +37,12 @@ export function filterValidAdditionalUsers(users: typeof additionalUsers): typeo
     user.email && validateEmail(user.email) &&
     user.phone && validatePhone(user.phone)
   );
+}
+
+export function phoneValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const phone = control.value;
+    const re = /^\+?(\(\d{2,3}\)|\d{2,3})?[-\s]?\d{3,4}[-\s]?\d{2,3}[-\s]?\d{2,3}$/;
+    return re.test(phone) ? null : { invalidPhone: true };
+  };
 }

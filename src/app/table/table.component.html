@@ -1,15 +1,15 @@
 <table>
   <thead class="m">
     <tr>
-      <th>Name</th>
-      <th>Specialty</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Nationality</th>
+      <th (click)="sort.set('fullName')">Name</th>
+      <th (click)="sort.set('course')">Specialty</th>
+      <th (click)="sort.set('age')">Age</th>
+      <th (click)="sort.set('gender')">Gender</th>
+      <th (click)="sort.set('country')">Nationality</th>
     </tr>
   </thead>
   <tbody>
-    @for(person of people; track $index) {
+    @for(person of sortedPeople(); track $index) {
       <tr>
         <td>{{ person.fullName }}</td>
         <td>{{ person.course }}</td>

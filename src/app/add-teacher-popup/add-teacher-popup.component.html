@@ -1,77 +1,79 @@
-<span class="overlay">
-  <span class="popup">
-    <span class="top-bar fr">
-      <h1>Add Teacher</h1>
-      <button class="text-button cancel" (click)="close()">&#10006;</button>
-    </span>
-
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
-      <span class="fc">
-        <label for="name">Name</label>
-        <input type="text" formControlName="name" id="name" placeholder="Enter name" class="w"/>
+@if(visible) {
+  <span class="overlay">
+    <span class="popup">
+      <span class="top-bar fr">
+        <h1>Add Teacher</h1>
+        <button class="text-button cancel" (click)="close()">&#10006;</button>
       </span>
 
-      <span class="fc">
-        <label for="spec">Speciality</label>
-        <select id="spec" formControlName="speciality" class="w">
-          <option value="">--Select--</option>
-          <option>Mathematics</option>
-          <option>Physics</option>
-          <option>Chemistry</option>
-        </select>
-      </span>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+        <span class="fc">
+          <label for="name">Name</label>
+          <input type="text" formControlName="name" id="name" placeholder="Enter name" class="w"/>
+        </span>
 
-      <span class="grid">
-        <span class="fc w">
-          <label>Country</label>
-          <select formControlName="country">
+        <span class="fc">
+          <label for="spec">Speciality</label>
+          <select id="spec" formControlName="course" class="w">
             <option value="">--Select--</option>
-            <option>Ukraine</option>
-            <option>Poland</option>
-            <option>Germany</option>
+            <option>Mathematics</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
           </select>
         </span>
-        <span class="fc w">
-          <label>City</label>
-          <input type="text" formControlName="city"/>
+
+        <span class="grid">
+          <span class="fc w">
+            <label>Country</label>
+            <select formControlName="country">
+              <option value="">--Select--</option>
+              <option>Ukraine</option>
+              <option>Poland</option>
+              <option>Germany</option>
+            </select>
+          </span>
+          <span class="fc w">
+            <label>City</label>
+            <input type="text" formControlName="city"/>
+          </span>
+          <span class="fc w">
+            <label for="email">Email</label>
+            <input id="email" type="email" formControlName="email"/>
+          </span>
+          <span class="fc w">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" formControlName="phone"/>
+          </span>
         </span>
-        <span class="fc w">
-          <label for="email">Email</label>
-          <input id="email" type="email" formControlName="email"/>
+
+        <span class="fc">
+          <label for="dot">Date of birth</label>
+          <input id="dot" type="date" formControlName="b_date"/>
         </span>
-        <span class="fc w">
-          <label for="phone">Phone</label>
-          <input id="phone" type="tel" formControlName="phone"/>
+
+
+        <span class="fr">
+          <label>Sex</label>
+          <span class="sex-container">
+            <label class="sex" for="male">Male</label>
+            <input type="radio" formControlName="gender" value="male" id="male"/>
+            <label class="sex" style="margin-left: 1rem" for="female">Female</label>
+            <input type="radio" formControlName="gender" value="female" id="female"/>
+          </span>
         </span>
-      </span>
 
-      <span class="fc">
-        <label for="dot">Date of birth</label>
-        <input id="dot" type="date" formControlName="dob"/>
-      </span>
-
-
-      <span class="fr">
-        <label>Sex</label>
-        <span class="sex-container">
-          <label class="sex" for="male">Male</label>
-          <input type="radio" formControlName="sex" value="male" id="male"/>
-          <label class="sex" style="margin-left: 1rem" for="female">Female</label>
-          <input type="radio" formControlName="sex" value="female" id="female"/>
+        <span class="fr" style="align-items: center">
+          <label for="color">Background color</label>
+          <input id="color" type="color" formControlName="bg_color"/>
         </span>
-      </span>
 
-      <span class="fr" style="align-items: center">
-        <label for="color">Background color</label>
-        <input id="color" type="color" formControlName="color"/>
-      </span>
+        <span class="fc">
+          <label for="notes">Notes (optional)</label>
+          <textarea class="w" id="notes" formControlName="notes"></textarea>
+        </span>
 
-      <span class="fc">
-        <label for="notes">Notes (optional)</label>
-        <textarea class="w" id="notes" formControlName="notes"></textarea>
-      </span>
-
-      <button type="submit" [disabled]="form.invalid" class="border-button w m">Add</button>
-    </form>
+        <button type="submit" [disabled]="form.invalid" class="border-button w m">Add</button>
+      </form>
+    </span>
   </span>
-</span>
+}

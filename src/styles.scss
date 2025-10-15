@@ -28,7 +28,7 @@
 }
 
 .l {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 
 .text-button {
@@ -52,6 +52,12 @@
     color: white;
     background-color: $accent-color;
   }
+  &:disabled {
+    background-color: color.adjust($accent-color, $lightness: 30%);
+    border-color: color.adjust($accent-color, $lightness: 30%);
+    color: color.adjust($accent-color, $lightness: 20%);
+    cursor: default;
+  }
 }
 
 input, select {
@@ -65,5 +71,6 @@ body {
 
 
 .no-scroll {
-  overflow-y: scroll;
+  overflow-y: hidden;
+  margin-right: 15px;
 }

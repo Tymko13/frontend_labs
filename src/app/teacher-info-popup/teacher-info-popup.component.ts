@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Person} from '../_person/person';
+import {PeopleService} from '../_person/people.service';
 
 @Component({
   selector: 'app-teacher-info-popup',
@@ -16,8 +17,15 @@ export class TeacherInfoPopupComponent {
   @Input() person: Person | null = null;
   @Output() closed = new EventEmitter<void>();
 
+  private readonly peopleService = inject(PeopleService);
+
   close() {
     this.closed.emit();
-    document.body.classList.remove('no-scroll');
+  }
+
+  toggleFav(person: Person | null) {
+    if(person) {
+      this.person = this.peopleService.updatePerson({id: person.id, favourite: !person.favourite});
+    }
   }
 }

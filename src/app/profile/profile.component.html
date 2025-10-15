@@ -1,5 +1,5 @@
 <section class="fc profile-wrapper">
-  <span class="img-wrapper">
+  <span class="img-wrapper"  (click)="infoService.toggleInfoTeacher(person)">
     @if(person?.pictureLarge) {
       <img [src]="person?.pictureLarge" alt="Portrait of {{person?.fullName}}">
     } @else {

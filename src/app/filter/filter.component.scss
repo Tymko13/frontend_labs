@@ -22,6 +22,11 @@
       color: black;
       cursor: pointer;
     }
+    &:first-of-type {
+      & > label {
+        margin-left: 0;
+      }
+    }
   }
 }
 
