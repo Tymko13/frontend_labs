@@ -1,5 +1,5 @@
 {
-  "$schema": "../frontend-labs/node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "../frontend_labs1/node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -33,9 +33,6 @@
             "styles": [
               "src/styles.scss",
               "src/assets/normalize.css"
-            ],
-            "scripts": [
-              "src/assets/js/app.js"
             ]
           },
           "configurations": {
@@ -90,9 +87,6 @@
             "styles": [
               "src/styles.scss",
               "src/assets/normalize.css"
-            ],
-            "scripts": [
-              "src/assets/js/app.js"
             ]
           }
         }

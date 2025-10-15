@@ -2,6 +2,7 @@
 
 .wrapper {
   max-width: 70rem;
+  min-width: 35rem;
   margin: 0 auto;
   min-height: 100vh;
   padding: 2rem 5rem;
@@ -49,13 +50,13 @@ footer {
 }
 
 .top-teacher-wrapper {
-  gap: 2.5%;
+  gap: 2.5rem;
   row-gap: 1rem;
   flex-wrap: wrap;
 }
 
 app-profile {
-  width: 18%;
+  width: 10rem;
 }
 
 app-nav {

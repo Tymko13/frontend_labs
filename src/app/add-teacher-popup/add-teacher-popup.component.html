@@ -21,7 +21,7 @@
         </select>
       </span>
 
-      <span class="fr">
+      <span class="grid">
         <span class="fc w">
           <label>Country</label>
           <select formControlName="country">
@@ -35,17 +35,14 @@
           <label>City</label>
           <input type="text" formControlName="city"/>
         </span>
-      </span>
-
-      <span class="fr">
         <span class="fc w">
           <label for="email">Email</label>
           <input id="email" type="email" formControlName="email"/>
         </span>
-        <div class="fc w">
+        <span class="fc w">
           <label for="phone">Phone</label>
           <input id="phone" type="tel" formControlName="phone"/>
-        </div>
+        </span>
       </span>
 
       <span class="fc">
@@ -55,11 +52,11 @@
 
 
       <span class="fr">
-        <label style="margin-right: 1rem;">Sex</label>
-        <span style="align-items: center">
-          <label for="male">Male</label>
+        <label>Sex</label>
+        <span class="sex-container">
+          <label class="sex" for="male">Male</label>
           <input type="radio" formControlName="sex" value="male" id="male"/>
-          <label style="margin-left: 1rem" for="female">Female</label>
+          <label class="sex" style="margin-left: 1rem" for="female">Female</label>
           <input type="radio" formControlName="sex" value="female" id="female"/>
         </span>
       </span>

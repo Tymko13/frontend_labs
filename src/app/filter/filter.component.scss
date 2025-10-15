@@ -1,16 +1,20 @@
 .filter-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 2rem;
-  height: 2rem;
+  row-gap: 1rem;
   &>span {
-    height: 100%;
+    height: 2rem;
     border-right: 2px dotted #666;
     color: #666;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    &.checkbox{
+      color: black;
+    }
     &:last-child {
       border-right: none;
     }
@@ -34,20 +38,8 @@ input {
 }
 
 label {
-  margin: 1rem;
+  margin: 0 1rem;
   &:hover {
     cursor: pointer;
-  }
-}
-
-@media (max-width: 920px) {
-  input, select, .filter-wrapper {
-    font-size: 0.75rem;
-  }
-}
-
-@media (max-width: 835px) {
-  .filter-wrapper {
-    font-size: 0.5rem;
   }
 }
