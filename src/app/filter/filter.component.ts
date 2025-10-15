@@ -1,10 +1,11 @@
-import {Component, inject} from '@angular/core';
+import {Component, effect, EventEmitter, inject, Output, signal} from '@angular/core';
 import {PeopleService} from '../_person/people.service';
-import {AsyncPipe} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-filter',
   imports: [
+    FormsModule
 
   ],
   templateUrl: './filter.component.html',
@@ -12,9 +13,25 @@ import {AsyncPipe} from '@angular/common';
 })
 export class FilterComponent {
   readonly peopleService = inject(PeopleService);
-  readonly ages = [
-    "18-31",
-    "32-51",
-    "52+"
-  ]
+  readonly ages = this.peopleService.getAges();
+
+  selectedAge = signal<number | null>(null);
+  selectedLocation = signal<string | null>(null);
+  selectedSex = signal<string | null>(null);
+  requirePhoto = signal<boolean>(false);
+  onlyFavourite = signal<boolean>(false);
+
+  constructor() {
+    effect(() => {
+      this.filter.emit({
+        country: this.selectedLocation(),
+        age: this.selectedAge(),
+        gender: this.selectedSex(),
+        favourite: this.onlyFavourite(),
+        requitePhoto: this.requirePhoto()
+      })
+    })
+  }
+
+  @Output() filter = new EventEmitter<{}>();
 }
