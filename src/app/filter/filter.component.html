@@ -1,17 +1,19 @@
 <section class="filter-wrapper">
   <span>
     <label for="age">Age</label>
-    <select id="age">
+    <select [disabled]="disabled" [(ngModel)]="selectedAge" id="age">
+      <option [ngValue]="null">Any</option>
       @for (age of ages; track $index) {
-        <option [value]="age">{{ age }}</option>
+        <option [ngValue]="age">{{ age }}</option>
       }
     </select>
   </span>
 
   <span>
     <label for="location">Region</label>
-    <select id="location">
-      @for (location of peopleService.getLocations() | async; track $index) {
+    <select [disabled]="disabled" [(ngModel)]="selectedLocation" id="location">
+      <option [ngValue]="null">Any</option>
+      @for (location of peopleService.getLocations(); track $index) {
         <option [value]="location">{{ location }}</option>
       }
     </select>
@@ -19,20 +21,21 @@
 
   <span>
     <label for="sex">Sex</label>
-    <select id="sex">
-      @for (sex of ["Male", "Female", "Intersex"]; track $index) {
+    <select [disabled]="disabled" [(ngModel)]="selectedSex" id="sex">
+      <option [ngValue]="null">Any</option>
+      @for (sex of ["Male", "Female"]; track $index) {
         <option [value]="sex">{{ sex }}</option>
       }
     </select>
   </span>
 
-  <span>
-    <input type="checkbox" id="photo">
+  <span class="checkbox">
+    <input [disabled]="disabled" [(ngModel)]="requirePhoto" type="checkbox" id="photo">
     <label for="photo">Only with photo</label>
   </span>
 
-  <span>
-    <input type="checkbox" id="fav">
+  <span class="checkbox">
+    <input [disabled]="disabled" [(ngModel)]="onlyFavourite" type="checkbox" id="fav">
     <label for="fav">Only favourite</label>
   </span>
 

@@ -1,16 +1,17 @@
-import {Component, inject} from '@angular/core';
-import {PeopleService} from '../_services/people.service';
-import {AsyncPipe} from '@angular/common';
+import {Component, computed, inject, signal} from '@angular/core';
+import {PeopleService} from '../_person/people.service';
 
 @Component({
   selector: 'app-table',
-  imports: [
-    AsyncPipe
-  ],
+  imports: [],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
 export class TableComponent {
-  readonly peopleService = inject(PeopleService)
-  readonly people = this.peopleService.getPeople();
+  readonly peopleService = inject(PeopleService);
+
+  sort = signal<string>("");
+  readonly sortedPeople = computed(() => {
+    return this.peopleService.sortedPeopleBy(this.sort());
+  })
 }

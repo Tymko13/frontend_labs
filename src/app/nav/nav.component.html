@@ -1,6 +1,6 @@
 <nav class="fr">
-  @for (button of buttons; track button) {
-    <button class="text-button m left">{{ button }}</button>
+  @for (button of buttons; track $index) {
+    <button class="text-button m left" (click)="scrollTo(destination[$index])">{{ button }}</button>
   }
-  <button class="border-button m right">Add Teacher</button>
+  <button class="border-button m right" (click)="emitTeacher()">Add Teacher</button>
 </nav>

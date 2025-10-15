@@ -1,0 +1,35 @@
+@if(visible) {
+  <span class="overlay">
+    <span class="popup">
+      <span class="top-bar fr">
+        <h1>Teacher Info</h1>
+        <button class="text-button cancel" (click)="close()">&#10006;</button>
+      </span>
+      <span class="fr w" style="padding: 2rem;">
+        @if(person?.pictureLarge) {
+          <img [src]="person?.pictureLarge" alt="A portrait of a person.">
+        }
+        <span class="fc w info">
+          <span class="fr w heading">
+            <h1 class="l">{{ person?.fullName }}</h1>
+            <span class="mark" (click)="toggleFav(person)">
+              @if(!person?.favourite) {
+                <span class="extra-mark"></span>
+              }
+            </span>
+          </span>
+
+          <h2>{{ person?.course }}</h2>
+          <p>{{ person?.city }}, {{ person?.country}}</p>
+          <p>{{ person?.age }}, {{ person?.gender }}</p>
+          <a href="">{{ person?.email }}</a>
+          <p>{{ person?.phone}}</p>
+        </span>
+      </span>
+      <span class="fc w" style="padding: 0 0 2rem 2rem;">
+        <p class="description">{{person?.note || 'No note available.'}}</p>
+        <a href="" class="toggle">toggle-map</a>
+      </span>
+    </span>
+  </span>
+}

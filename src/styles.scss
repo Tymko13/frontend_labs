@@ -28,7 +28,7 @@
 }
 
 .l {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 
 .text-button {
@@ -52,12 +52,25 @@
     color: white;
     background-color: $accent-color;
   }
+  &:disabled {
+    background-color: color.adjust($accent-color, $lightness: 30%);
+    border-color: color.adjust($accent-color, $lightness: 30%);
+    color: color.adjust($accent-color, $lightness: 20%);
+    cursor: default;
+  }
 }
 
-input {
+input, select {
   padding: 0.5rem 0.25rem;
 }
 
 body {
   background-color: #fcfcfc;
+  min-width: 720px;
+}
+
+
+.no-scroll {
+  overflow-y: hidden;
+  margin-right: 15px;
 }

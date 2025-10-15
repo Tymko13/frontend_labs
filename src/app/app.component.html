@@ -2,27 +2,27 @@
   <div class="fc">
     <header class="fr">
       <h1 class="title l">Teachinder</h1>
-      <input type="text" placeholder="Name, note or age to search">
-      <button class="border-button">Search</button>
+      <input [(ngModel)]="currentQuery" type="text" placeholder="Name, note or age to search">
+      <button class="border-button" (click)="search()">Search</button>
     </header>
-    <app-nav></app-nav>
+    <app-nav (addTeacherPopup)="toggleAddTeacher()"></app-nav>
   </div>
 
-  <app-section title="Top Teachers">
-    <app-filter></app-filter>
+  <app-section id="top-teachers" title="Top Teachers">
+    <app-filter [disabled]="!!query()" (filter)="filterPeople($event)"></app-filter>
     <section class="fr top-teacher-wrapper">
-      @for (person of people | async; track person) {
+      @for (person of filteredPeople(); track $index) {
         <app-profile [person]="person"></app-profile>
       }
     </section>
   </app-section>
-  <app-section title="Statistics">
+  <app-section id="statistics" title="Statistics">
     <app-table></app-table>
   </app-section>
-  <app-section title="Favourites">
+  <app-section id="favourites" title="Favourites">
     <app-favs></app-favs>
   </app-section>
-  <app-section title="">
+  <app-section id="about" title="">
     <footer class="fc">
       <small>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius eligendi, facere ipsa necessitatibus
@@ -37,10 +37,12 @@
         Ab culpa dicta eius est fugit id in neque praesentium, quia rem repellendus tempora veniam veritatis voluptas
         voluptate? Asperiores ipsa iure sint.
       </small>
-      <app-nav></app-nav>
+      <app-nav (addTeacherPopup)="toggleAddTeacher()"></app-nav>
     </footer>
   </app-section>
 </div>
 
-<!--<app-add-teacher-popup [visible]="true"></app-add-teacher-popup>>-->
+<app-teacher-info-popup [person]="currentPerson()" [visible]="visibleInfo()" (closed)="infoService.toggleInfoTeacher(null)"></app-teacher-info-popup>
+<app-add-teacher-popup [visible]="visibleAdd" (closed)="toggleAddTeacher()"></app-add-teacher-popup>
+
 

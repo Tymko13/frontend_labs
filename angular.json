@@ -1,5 +1,5 @@
 {
-  "$schema": "../frontend-labs/node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "../frontend_labs1/node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,9 +31,9 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/assets"],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "src/styles.scss",
+              "src/assets/normalize.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -85,9 +85,9 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/assets"],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "src/styles.scss",
+              "src/assets/normalize.css"
+            ]
           }
         }
       }

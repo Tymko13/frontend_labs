@@ -1,12 +1,20 @@
 app-profile {
-  flex: 0 0 18%;
+  min-width: 10rem;
 }
 
 .favs-wrapper {
   position: relative;
+}
+
+.no-overflow {
+  overflow-x: hidden;
+}
+
+.profiles-wrapper {
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
   display: flex;
-  flex-wrap: nowrap;
-  gap: 2.5%;
+  gap: 2.5rem;
 }
 
 .next, .prev {
