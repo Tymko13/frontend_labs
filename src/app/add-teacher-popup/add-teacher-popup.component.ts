@@ -2,6 +2,7 @@ import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {phoneValidator} from '../_person/_mapper/validator';
 import {PeopleService} from '../_person/people.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-teacher-popup',
@@ -15,7 +16,8 @@ export class AddTeacherPopupComponent {
   @Input() visible = false;
   @Output() closed = new EventEmitter<void>();
 
-  private readonly peopleService = inject(PeopleService);
+  readonly peopleService = inject(PeopleService);
+  private readonly http = inject(HttpClient);
 
   close() {
     this.closed.emit();
@@ -40,8 +42,15 @@ export class AddTeacherPopupComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('Form submitted:', this.form.value);
-      this.peopleService.addPerson(this.form.value);
+      this.http.post('http://localhost:3000/submissions', this.form.value)
+        .subscribe({
+          next: () => {
+            console.log('Submission successful.');
+            this.peopleService.addPerson(this.form.value);
+          } ,
+          error: () => console.error('Error occurred during submission.'),
+        });
+      this.form.reset();
       this.closed.emit();
     }
   }

@@ -22,9 +22,7 @@
 </table>
 
 <span class="pagination">
-  <a>1</a>
-  <a href="">2</a>
-  <a href="">3</a>
-  ...
-  <a href="">Last</a>
+  @for(_ of [].constructor(Math.ceil(peopleService.filteredPeople().length / numPerPage)); let i = $index; track i){
+    <button [class.current]="peopleService.pageNum() == i + 1" (click)="paginateTo(i + 1)" class="text-button">{{i + 1}}</button>
+  }
 </span>

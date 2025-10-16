@@ -9,7 +9,7 @@
   </div>
 
   <app-section id="top-teachers" title="Top Teachers">
-    <app-filter [disabled]="!!query()" (filter)="filterPeople($event)"></app-filter>
+    <app-filter [disabled]="!!peopleService.query()" (filter)="filterPeople($event)"></app-filter>
     <section class="fr top-teacher-wrapper">
       @for (person of filteredPeople(); track $index) {
         <app-profile [person]="person"></app-profile>
