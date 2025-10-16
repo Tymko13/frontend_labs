@@ -1,20 +1,45 @@
-import {Injectable, signal} from '@angular/core';
+import {computed, inject, Injectable, signal} from '@angular/core';
 import {Person} from './person';
-import {getAllPeople} from './_mapper/mapper';
+import {getAllPeople, mapRandomUsersToPeople} from './_mapper/mapper';
 import {PersonDTO} from './personDTO';
+import {HttpClient} from '@angular/common/http';
+import {randomUserMock} from './_mapper/FE4U-Lab2-mock';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleService {
+  private readonly http = inject(HttpClient);
+
   private readonly people = signal<Person[]>([]);
 
+  query = signal<string>("");
+  filters = signal<any>(null);
+  filteredPeople = computed(() => {
+    let people;
+    if (this.query()) {
+      people = this.searchPeople(this.query());
+    } else {
+      people = this.filterPeople(this.filters());
+    }
+    return people;
+  })
+
+
   constructor() {
-    this.people.set(getAllPeople());
+    // this.people.set(getAllPeople());
+    this.fetchPeople();
   }
 
-  getPeople(){
-    return this.people;
+  size() {
+    return this.people().length;
+  }
+
+  fetchPeople() {
+    this.http.get<any>('https://randomuser.me/api/?results=50')
+      .subscribe(res => {
+        this.people.set(mapRandomUsersToPeople(res.results as typeof randomUserMock));
+      });
   }
 
   filterPeople(filters: {
@@ -34,24 +59,29 @@ export class PeopleService {
     });
   }
 
-  sortedPeopleBy(sort: string): Person[] {
+  pageNum = signal<number>(1);
+  paginatedSortedPeopleBy(sort: string, pageSize: number): Person[] {
+    let people = this.filteredPeople();
     switch (sort) {
       case 'course':
-        return this.people().sort((a, b) => a.course.localeCompare(b.course));
-
+        people = people.toSorted((a, b) => a.course.localeCompare(b.course));
+        break;
       case 'age':
-        return this.people().sort((a, b) => a.age - b.age);
-
+        people = people.toSorted((a, b) => a.age - b.age);
+        break;
       case 'gender':
-        return this.people().sort((a, b) => a.gender.localeCompare(b.gender));
-
+        people = people.toSorted((a, b) => a.gender.localeCompare(b.gender));
+        break;
       case 'country':
-        return this.people().sort((a, b) => a.country.localeCompare(b.country));
-
+        people = people.toSorted((a, b) => a.country.localeCompare(b.country));
+        break;
       case 'fullName':
       default:
-        return this.people().sort((a, b) => a.fullName.localeCompare(b.fullName));
+        people = people.toSorted((a, b) => a.fullName.localeCompare(b.fullName));
     }
+    const start = (this.pageNum() - 1) * pageSize;
+    const end = start + pageSize;
+    return people.slice(start, end);
   }
 
   searchPeople(query: string) {
@@ -73,14 +103,25 @@ export class PeopleService {
     return Array.from(new Set(this.people().map(person => person.age))).sort();
   }
 
+  getCourses(): string[] {
+    return Array.from(new Set(this.people().map(person => person.course))).sort();
+  }
+
   personById(id: string) {
     return this.people().find(p => p.id === id) ?? null;
   }
 
+  getPercentOfPeopleOlderThan(age: number) {
+    let num = 0;
+    for (let person of this.people()) {
+      if (person.age > age) num++;
+    }
+    return Math.floor((num / this.size() * 100));
+  }
 
   updatePerson(updated: Partial<Person>): Person | null {
     this.people.update(list =>
-      list.map(p => p.id === updated.id ? { ...p, ...updated } : p)
+      list.map(p => p.id === updated.id ? {...p, ...updated} : p)
     );
     return this.personById(updated?.id || "");
   }

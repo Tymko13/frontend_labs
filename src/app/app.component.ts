@@ -1,4 +1,4 @@
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {SectionComponent} from './section/section.component';
 import {NavComponent} from './nav/nav.component';
 import {PeopleService} from './_person/people.service';
@@ -9,7 +9,7 @@ import {FavsComponent} from './favs/favs.component';
 import {AddTeacherPopupComponent} from './add-teacher-popup/add-teacher-popup.component';
 import {FormsModule} from '@angular/forms';
 import {TeacherInfoPopupComponent} from './teacher-info-popup/teacher-info-popup.component';
-import {InfoService} from './_person/info.service';
+import {InfoService} from './teacher-info-popup/info.service';
 
 @Component({
   selector: 'app-root',
@@ -31,17 +31,14 @@ export class AppComponent {
   readonly peopleService = inject(PeopleService);
   readonly infoService = inject(InfoService);
 
-  filter = signal<any>({});
-  query = signal<string>("");
-  filteredPeople = computed(() => {
-    if(this.query()) {
-      return this.peopleService.searchPeople(this.query());
-    }
-    return this.peopleService.filterPeople(this.filter());
-  })
+  filteredPeople = this.peopleService.filteredPeople;
 
   filterPeople(filter: any) {
-    this.filter.set(filter);
+    this.peopleService.filters.set(filter);
+  }
+  currentQuery: string = "";
+  search() {
+    this.peopleService.query.set(this.currentQuery);
   }
 
   visibleAdd = false;
@@ -55,11 +52,6 @@ export class AppComponent {
       document.body.classList.add('no-scroll');
     }
   }
-  currentQuery: string = "";
-  search() {
-    this.query.set(this.currentQuery);
-  }
-
 
   currentPerson = this.infoService.currentPerson;
   visibleInfo = this.infoService.visibleInfo;

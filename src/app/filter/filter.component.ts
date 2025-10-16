@@ -12,7 +12,6 @@ import {FormsModule} from '@angular/forms';
 })
 export class FilterComponent {
   readonly peopleService = inject(PeopleService);
-  readonly ages = this.peopleService.getAges();
 
   selectedAge = signal<number | null>(null);
   selectedLocation = signal<string | null>(null);

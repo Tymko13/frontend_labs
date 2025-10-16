@@ -10,8 +10,16 @@ import {PeopleService} from '../_person/people.service';
 export class TableComponent {
   readonly peopleService = inject(PeopleService);
 
+  numPerPage = 10;
+
   sort = signal<string>("");
   readonly sortedPeople = computed(() => {
-    return this.peopleService.sortedPeopleBy(this.sort());
-  })
+    return this.peopleService.paginatedSortedPeopleBy(this.sort(), this.numPerPage);
+  });
+
+  paginateTo(page: number) {
+    this.peopleService.pageNum.set(page);
+  }
+
+  protected readonly Math = Math;
 }

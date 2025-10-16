@@ -3,7 +3,7 @@
     <label for="age">Age</label>
     <select [disabled]="disabled" [(ngModel)]="selectedAge" id="age">
       <option [ngValue]="null">Any</option>
-      @for (age of ages; track $index) {
+      @for (age of peopleService.getAges(); track $index) {
         <option [ngValue]="age">{{ age }}</option>
       }
     </select>

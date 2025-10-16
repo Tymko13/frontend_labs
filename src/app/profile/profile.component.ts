@@ -1,6 +1,6 @@
 import {Component, inject, Input} from '@angular/core';
 import {Person} from '../_person/person';
-import {InfoService} from '../_person/info.service';
+import {InfoService} from '../teacher-info-popup/info.service';
 
 @Component({
   selector: 'app-profile',

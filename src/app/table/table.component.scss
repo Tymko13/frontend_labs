@@ -50,13 +50,12 @@ tbody tr:nth-child(even) {
   align-items: start;
   padding: 1rem 0.5rem;
   gap: 0.5rem;
-  font-size: 1.1rem;
+  &>button {
+    font-size: 1.3rem;
+  }
 }
 
-a:link {
-  color: $color-cyan;
-  text-decoration: none;
-  &:hover {
-    color: color.adjust($color-cyan, $lightness: -10%);
-  }
+.current {
+  color: black;
+  cursor: default;
 }

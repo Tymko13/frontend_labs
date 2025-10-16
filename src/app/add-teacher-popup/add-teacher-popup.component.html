@@ -16,9 +16,9 @@
           <label for="spec">Speciality</label>
           <select id="spec" formControlName="course" class="w">
             <option value="">--Select--</option>
-            <option>Mathematics</option>
-            <option>Physics</option>
-            <option>Chemistry</option>
+            @for(course of peopleService.getCourses(); track $index) {
+              <option [value]="course">{{ course }}</option>
+            }
           </select>
         </span>
 
@@ -27,9 +27,9 @@
             <label>Country</label>
             <select formControlName="country">
               <option value="">--Select--</option>
-              <option>Ukraine</option>
-              <option>Poland</option>
-              <option>Germany</option>
+              @for(country of peopleService.getLocations(); track $index) {
+                <option [value]="country">{{ country }}</option>
+              }
             </select>
           </span>
           <span class="fc w">

@@ -1,0 +1,30 @@
+{
+  "submissions": [
+    {
+      "id": "6761",
+      "name": "Tymko Kon",
+      "course": "Chess",
+      "country": "Ireland",
+      "city": "Burg",
+      "email": "t.kondrashov@ukma.edu.ua",
+      "phone": "096-157-69-96",
+      "b_date": "2018-02-15",
+      "gender": "male",
+      "bg_color": "#bd8f8f",
+      "notes": "Hello World!"
+    },
+    {
+      "id": "b69d",
+      "name": "fvsdfv",
+      "course": "Art",
+      "country": "Brazil",
+      "city": "sfddsfv",
+      "email": "t.kondrashov@ukma.edu.ua",
+      "phone": "096-157-69-96",
+      "b_date": "2025-10-02",
+      "gender": "male",
+      "bg_color": "#000000",
+      "notes": ""
+    }
+  ]
+}
