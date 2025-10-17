@@ -21,9 +21,11 @@
     <app-table></app-table>
   </app-section>
 
-  <app-section (click)="showPersonInfo($event)" id="favourites" title="Favourites">
-    <app-favs></app-favs>
-  </app-section>
+  @if(peopleService.favPeople().length > 0) {
+    <app-section (click)="showPersonInfo($event)" id="favourites" title="Favourites">
+      <app-favs></app-favs>
+    </app-section>
+  }
 
   <app-section id="about" title="">
     <footer class="fc">

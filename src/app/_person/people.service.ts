@@ -23,6 +23,10 @@ export class PeopleService {
       people = this.filterPeople(this.filters());
     }
     return people;
+  });
+
+  favPeople = computed(() => {
+    return this.people().filter(p => p.favourite);
   })
 
 

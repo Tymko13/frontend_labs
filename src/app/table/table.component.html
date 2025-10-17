@@ -1,28 +1,41 @@
 <table>
   <thead class="m">
-    <tr>
-      <th (click)="sort.set('fullName')">Name</th>
-      <th (click)="sort.set('course')">Specialty</th>
-      <th (click)="sort.set('age')">Age</th>
-      <th (click)="sort.set('gender')">Gender</th>
-      <th (click)="sort.set('country')">Nationality</th>
-    </tr>
+  <tr>
+    <th [class.current-sort]="sort()==='fullName'" (click)="sort.set('fullName')">Name</th>
+    <th [class.current-sort]="sort()==='course'" (click)="sort.set('course')">Specialty</th>
+    <th [class.current-sort]="sort()==='age'" (click)="sort.set('age')">Age</th>
+    <th [class.current-sort]="sort()==='gender'" (click)="sort.set('gender')">Gender</th>
+    <th [class.current-sort]="sort()==='country'" (click)="sort.set('country')">Nationality</th>
+  </tr>
   </thead>
   <tbody>
-    @for(person of sortedPeople(); track $index) {
+    @for (person of sortedPeople(); track $index) {
       <tr>
         <td>{{ person.fullName }}</td>
         <td>{{ person.course }}</td>
-        <td>{{person.age}}</td>
-        <td>{{person.gender}}</td>
+        <td>{{ person.age }}</td>
+        <td>{{ person.gender }}</td>
         <td>{{ person.country }}</td>
+      </tr>
+    }
+    @for (_ of [].constructor(numPerPage - sortedPeople().length); track $index) {
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
     }
   </tbody>
 </table>
 
-<span class="pagination">
-  @for(_ of [].constructor(Math.ceil(peopleService.filteredPeople().length / numPerPage)); let i = $index; track i){
-    <button [class.current]="peopleService.pageNum() == i + 1" (click)="paginateTo(i + 1)" class="text-button">{{i + 1}}</button>
-  }
-</span>
+@if (peopleService.filteredPeople().length > numPerPage) {
+  <span class="pagination">
+    @for (_ of [].constructor(Math.ceil(peopleService.filteredPeople().length / numPerPage)); let i = $index; track i) {
+      <button [class.current]="peopleService.pageNum() == i + 1" (click)="paginateTo(i + 1)"
+              class="text-button">{{ i + 1 }}</button>
+    }
+  </span>
+}
+
