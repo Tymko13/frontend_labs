@@ -32,7 +32,8 @@
             "assets": ["src/assets"],
             "styles": [
               "src/styles.scss",
-              "src/assets/normalize.css"
+              "src/assets/normalize.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ]
           },
           "configurations": {
@@ -86,7 +87,8 @@
             "assets": ["src/assets"],
             "styles": [
               "src/styles.scss",
-              "src/assets/normalize.css"
+              "src/assets/normalize.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ]
           }
         }

@@ -1,7 +1,7 @@
 <section class="fc profile-wrapper">
-  <span class="img-wrapper"  (click)="infoService.toggleInfoTeacher(person)">
+  <span class="img-wrapper">
     @if(person?.pictureLarge) {
-      <img [src]="person?.pictureLarge" alt="Portrait of {{person?.fullName}}">
+      <img [attr.data-person-id]="person?.id ?? 0" [src]="person?.pictureLarge" alt="Portrait of {{person?.fullName}}">
     } @else {
       <h2 class="initials">{{toInitials(person?.fullName!)}}</h2>
     }

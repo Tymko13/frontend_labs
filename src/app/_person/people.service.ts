@@ -1,6 +1,6 @@
 import {computed, inject, Injectable, signal} from '@angular/core';
 import {Person} from './person';
-import {getAllPeople, mapRandomUsersToPeople} from './_mapper/mapper';
+import {mapRandomUsersToPeople} from './_mapper/mapper';
 import {PersonDTO} from './personDTO';
 import {HttpClient} from '@angular/common/http';
 import {randomUserMock} from './_mapper/FE4U-Lab2-mock';
@@ -143,5 +143,9 @@ export class PeopleService {
       note: person.notes!
     }
     this.people.update(list => [...list, newPerson]);
+  }
+
+  getPersonById(personId: string | null) {
+    return this.people().find(p => p.id === personId);
   }
 }

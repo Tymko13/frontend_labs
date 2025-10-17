@@ -1,6 +1,5 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Person} from '../_person/person';
-import {InfoService} from '../teacher-info-popup/info.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,8 +12,6 @@ import {InfoService} from '../teacher-info-popup/info.service';
 export class ProfileComponent {
   @Input() person: Person | null = null;
   @Input() showStar: boolean = true;
-
-  readonly infoService = inject(InfoService);
 
   toInitials(name: string): string {
     return name

@@ -55,4 +55,11 @@ export class AppComponent {
 
   currentPerson = this.infoService.currentPerson;
   visibleInfo = this.infoService.visibleInfo;
+
+  showPersonInfo(event: MouseEvent) {
+    const target = event.target;
+    if(target instanceof HTMLElement) {
+      this.infoService.toggleInfoTeacher(target.getAttribute("data-person-id"));
+    }
+  }
 }
