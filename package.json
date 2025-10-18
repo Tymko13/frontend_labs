@@ -19,6 +19,11 @@
     "@angular/platform-browser": "^19.1.0",
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
+    "@webdatarocks/webdatarocks": "^1.4.21",
+    "chart.js": "^4.5.1",
+    "dayjs": "^1.11.18",
+    "leaflet": "^1.9.4",
+    "lodash": "^4.17.21",
     "rxjs": "~7.8.0",
     "src": "^1.1.2",
     "tslib": "^2.3.0",
@@ -31,6 +36,8 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@types/jasmine": "~5.1.0",
+    "@types/leaflet": "^1.9.21",
+    "@types/lodash": "^4.17.20",
     "babel-loader": "^8.1.0",
     "babel-minify-webpack-plugin": "^0.3.1",
     "babel-preset-env": "^2.0.0-beta.2",
@@ -47,6 +54,7 @@
     "html-webpack-plugin": "^4.3.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "jasmine-core": "~5.5.0",
+    "json-server": "^1.0.0-beta.3",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
@@ -64,7 +72,6 @@
     "typescript": "~5.7.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0",
-    "json-server": "^1.0.0-beta.3"
+    "webpack-dev-server": "^3.11.0"
   }
 }

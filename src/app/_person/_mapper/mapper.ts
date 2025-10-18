@@ -1,9 +1,10 @@
 import { Person } from '../person';
-import {additionalUsers, randomUserMock} from './FE4U-Lab2-mock';
-import {filterValidAdditionalUsers, filterValidRandomUsers} from './validator';
+import {randomUserMock} from './FE4U-Lab2-mock';
+import {filterValidRandomUsers} from './validator';
+import _ from 'lodash';
 
 
-const courses = ["Mathematics", "Physics", "English", "Computer Science", "Dancing", "Chess",
+export const courses = ["Mathematics", "Physics", "English", "Computer Science", "Dancing", "Chess",
   "Biology", "Chemistry", "Law", "Art", "Medicine", "Statistics"];
 
 function getCourse(): string {
@@ -17,7 +18,7 @@ function capitalize(word: string | null | undefined): string {
 
 export function getAllPeople(): Person[] {
   const ids = new Set<string>();
-  return mapRandomUsersToPeople(randomUserMock).concat(mapAdditionalUsersToPeople(additionalUsers)).filter(person => {
+  return mapRandomUsersToPeople(randomUserMock).filter(person => {
     if(ids.has(person.id)) {
       return false;
     }
@@ -27,62 +28,33 @@ export function getAllPeople(): Person[] {
 }
 
 export function mapRandomUsersToPeople(randomUsers: typeof randomUserMock): Person[] {
-  return filterValidRandomUsers(randomUsers).map(user=> ({
-    gender: capitalize(user.gender),
-    title: capitalize(user.name.title),
-    fullName: capitalize(`${user.name.first}`) + ' ' + capitalize(`${user.name.last}`),
-    city: capitalize(user.location.city),
-    state: capitalize(user.location.state),
-    country: capitalize(user.location.country),
-    postcode: Number(user.location.postcode),
+  return _.map(filterValidRandomUsers(randomUsers), user => ({
+    gender: _.capitalize(_.get(user, 'gender', '')),
+    title: _.capitalize(_.get(user, 'name.title', '')),
+    fullName: `${_.capitalize(_.get(user, 'name.first', ''))} ${_.capitalize(_.get(user, 'name.last', ''))}`,
+    city: _.capitalize(_.get(user, 'location.city', '')),
+    state: _.capitalize(_.get(user, 'location.state', '')),
+    country: _.capitalize(_.get(user, 'location.country', '')),
+    postcode: Number(_.get(user, 'location.postcode', 0)),
     coordinates: {
-      latitude: Number(user.location.coordinates.latitude),
-      longitude: Number(user.location.coordinates.longitude),
+      latitude: Number(_.get(user, 'location.coordinates.latitude', 0)),
+      longitude: Number(_.get(user, 'location.coordinates.longitude', 0)),
     },
     timezone: {
-      offset: user.location.timezone.offset,
-      description: user.location.timezone.description,
+      offset: _.get(user, 'location.timezone.offset', ''),
+      description: _.get(user, 'location.timezone.description', ''),
     },
-    email: user.email,
-    b_date: user.dob.date,
-    age: user.dob.age,
-    phone: user.phone,
-    pictureLarge: user.picture.large,
-    pictureThumbnail: user.picture.thumbnail,
+    email: _.get(user, 'email', ''),
+    b_date: _.get(user, 'dob.date', ''),
+    age: _.get(user, 'dob.age', 0),
+    phone: _.get(user, 'phone', ''),
+    pictureLarge: _.get(user, 'picture.large', ''),
+    pictureThumbnail: _.get(user, 'picture.thumbnail', ''),
 
-    id: user.login.uuid,
+    id: _.get(user, 'login.uuid', ''),
     favourite: false,
     course: getCourse(),
     bg_color: '#ffffff',
     note: '',
-  }));
-}
-
-export function mapAdditionalUsersToPeople(users: typeof additionalUsers): Person[] {
-  return filterValidAdditionalUsers(users).map(user => ({
-    gender: capitalize(user.gender),
-    title: capitalize(user.title),
-    fullName: capitalize(user.full_name),
-    city: capitalize(user.city),
-    state: capitalize(user.state),
-    country: capitalize(user.country),
-    postcode: Number(user.postcode),
-    coordinates: {
-      latitude: user.coordinates ? Number(user.coordinates.latitude) : 0,
-      longitude: user.coordinates ? Number(user.coordinates.longitude) : 0,
-    },
-    timezone: user.timezone,
-    email: user.email!,
-    b_date: user.b_day!,
-    age: Math.floor((Date.now() - new Date(user.b_day!).getTime()) / (1000 * 60 * 60 * 24 * 365)),
-    phone: user.phone!,
-    pictureLarge: user.picture_large,
-    pictureThumbnail: user.picture_thumbnail,
-
-    id: user.id,
-    favourite: user.favorite ?? false,
-    course: user.course ?? getCourse(),
-    bg_color: user.bg_color ?? '#ffffff',
-    note: capitalize(user.note) ?? '',
   }));
 }
