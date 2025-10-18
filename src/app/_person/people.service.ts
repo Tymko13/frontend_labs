@@ -4,6 +4,7 @@ import {mapRandomUsersToPeople} from './_mapper/mapper';
 import {PersonDTO} from './personDTO';
 import {HttpClient} from '@angular/common/http';
 import {randomUserMock} from './_mapper/FE4U-Lab2-mock';
+import _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ export class PeopleService {
   private readonly http = inject(HttpClient);
 
   private readonly people = signal<Person[]>([]);
-
   query = signal<string>("");
   filters = signal<any>(null);
   filteredPeople = computed(() => {
@@ -24,14 +24,11 @@ export class PeopleService {
     }
     return people;
   });
-
   favPeople = computed(() => {
     return this.people().filter(p => p.favourite);
-  })
-
+  });
 
   constructor() {
-    // this.people.set(getAllPeople());
     this.fetchPeople();
   }
 
@@ -53,49 +50,44 @@ export class PeopleService {
     favourite?: boolean | null;
     requitePhoto?: boolean | null;
   }): Person[] {
-    return this.people().filter((person) => {
-      if (filters.country && person.country !== filters.country) return false;
-      if (filters.age && person.age !== filters.age) return false;
-      if (filters.gender && person.gender !== filters.gender) return false;
-      if (filters.favourite && !person.favourite) return false;
-      if (filters.requitePhoto && !person.pictureLarge) return false;
-      return true;
+    return _.filter(this.people(), person => {
+      return _.every([
+        !filters.country || person.country === filters.country,
+        !filters.age || person.age === filters.age,
+        !filters.gender || person.gender === filters.gender,
+        !filters.favourite || person.favourite,
+        !filters.requitePhoto || Boolean(person.pictureLarge)
+      ]);
     });
   }
 
   pageNum = signal<number>(1);
   paginatedSortedPeopleBy(sort: string, pageSize: number): Person[] {
-    let people = this.filteredPeople();
-    switch (sort) {
-      case 'course':
-        people = people.toSorted((a, b) => a.course.localeCompare(b.course));
-        break;
-      case 'age':
-        people = people.toSorted((a, b) => a.age - b.age);
-        break;
-      case 'gender':
-        people = people.toSorted((a, b) => a.gender.localeCompare(b.gender));
-        break;
-      case 'country':
-        people = people.toSorted((a, b) => a.country.localeCompare(b.country));
-        break;
-      case 'fullName':
-      default:
-        people = people.toSorted((a, b) => a.fullName.localeCompare(b.fullName));
-    }
+    const people = this.filteredPeople();
+
+    const sortFieldMap: Record<string, keyof Person> = {
+      course: 'course',
+      age: 'age',
+      gender: 'gender',
+      country: 'country',
+      fullName: 'fullName',
+    };
+    const field = sortFieldMap[sort] ?? 'fullName';
+    const sorted = _.orderBy(people, [field], ['asc']);
+
     const start = (this.pageNum() - 1) * pageSize;
-    const end = start + pageSize;
-    return people.slice(start, end);
+    return _.slice(sorted, start, start + pageSize);
   }
 
   searchPeople(query: string) {
     const lowerQuery = query.toLowerCase();
 
-    return this.people().filter(person => {
-      const fullNameMatch = person.fullName.toLowerCase().includes(lowerQuery);
-      const noteMatch = person.note?.toLowerCase().includes(lowerQuery) ?? false;
-      const ageMatch = person.age.toString().includes(lowerQuery);
-      return fullNameMatch || noteMatch || ageMatch;
+    return _.filter(this.people(), person => {
+      return _.some([
+        _.includes(person.fullName.toLowerCase(), lowerQuery),
+        _.includes(_.toLower(person.note ?? ''), lowerQuery),
+        _.includes(person.age.toString(), lowerQuery)
+      ]);
     });
   }
 
@@ -151,5 +143,12 @@ export class PeopleService {
 
   getPersonById(personId: string | null) {
     return this.people().find(p => p.id === personId);
+  }
+
+  getPeopleBy(field: string): [string[], number[]] {
+    const keys = _.uniq(this.filteredPeople().map(person => _.get(person, field)));
+    return [keys, keys.map(key => {
+      return this.filteredPeople().filter(person => _.get(person, field) == key).length;
+    })];
   }
 }

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {AfterViewInit, Component, inject} from '@angular/core';
 import {SectionComponent} from './section/section.component';
 import {NavComponent} from './nav/nav.component';
 import {PeopleService} from './_person/people.service';
@@ -10,6 +10,8 @@ import {AddTeacherPopupComponent} from './add-teacher-popup/add-teacher-popup.co
 import {FormsModule} from '@angular/forms';
 import {TeacherInfoPopupComponent} from './teacher-info-popup/teacher-info-popup.component';
 import {InfoService} from './teacher-info-popup/info.service';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 @Component({
   selector: 'app-root',
